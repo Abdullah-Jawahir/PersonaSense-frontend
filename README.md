@@ -1,83 +1,204 @@
-# Welcome to your Lovable project
+# PersonaSense ✨
 
-## Project info
+A beautiful, interactive personality quiz application that helps you discover whether you're more of an introvert or extrovert through thoughtfully designed questions about your daily habits and social preferences.
 
-**URL**: https://lovable.dev/projects/bb66adcb-12b5-46ac-9bcb-e2151c82bcaf
+![PersonaSense](https://img.shields.io/badge/PersonaSense-Personality%20Quiz-blue?style=for-the-badge&logo=react)
+![React](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue?style=for-the-badge&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-5.4.1-purple?style=for-the-badge&logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.11-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-## Features
+## 🌟 Features
+
+### 🎯 Interactive Personality Assessment
+- **7 carefully crafted questions** about lifestyle and social habits
+- **Multiple question types**: Sliders, radio buttons, and number inputs
+- **Real-time progress tracking** with visual progress bar
+- **Instant personality results** (Introvert 🌙 or Extrovert 🌞)
+
+### 🎨 Beautiful User Experience
+- **Responsive design** that works on all devices
+- **Smooth animations** and transitions throughout the app
+- **Intuitive navigation** with back/forward functionality
+- **Visual feedback** with emojis and engaging UI elements
 
 ### 🌙 Dark Theme Support
-PersonaSense now supports three theme modes:
-- **Light Theme**: Beautiful, clean design optimized for daytime use
-- **Dark Theme**: Easy on the eyes with carefully chosen colors for nighttime use
-- **System Theme**: Automatically follows your device's theme preference
+- **Three theme modes**: Light, Dark, and System preference
+- **Automatic theme persistence** across sessions
+- **Seamless theme switching** with the toggle in the top-right corner
 
-The theme toggle is available in the top-right corner of every page. Your theme preference is automatically saved and will persist across sessions.
+### 📱 Modern Features
+- **Share results** functionality using Web Share API
+- **No data collection** - everything stays on your device
+- **Quick completion** - takes just 2-3 minutes
+- **No registration required** - start exploring immediately
 
-## How can I edit this code?
+## 🚀 Getting Started
 
-There are several ways of editing your application.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-**Use Lovable**
+### Installation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bb66adcb-12b5-46ac-9bcb-e2151c82bcaf) and start prompting.
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd frontend
+   ```
 
-Changes made via Lovable will be committed automatically to this repo.
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-**Use your preferred IDE**
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+4. **Open your browser**
+   Navigate to `http://localhost:8080` to see the application running.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Available Scripts
 
-Follow these steps:
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint for code quality
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🏗️ Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Frontend Framework
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe development experience
+- **Vite** - Fast build tool and development server
 
-# Step 3: Install the necessary dependencies.
-npm i
+### UI & Styling
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful, accessible component library
+- **Radix UI** - Unstyled, accessible UI primitives
+- **Lucide React** - Beautiful, customizable icons
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### State Management & Routing
+- **React Router DOM** - Client-side routing
+- **React Query** - Server state management (ready for future API integration)
+- **React Hook Form** - Form state management
+
+### Development Tools
+- **ESLint** - Code linting and quality
+- **PostCSS** - CSS processing
+- **Autoprefixer** - CSS vendor prefixing
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── PersonalityQuiz.tsx
+│   ├── Results.tsx
+│   ├── ThemeProvider.tsx
+│   └── ThemeToggle.tsx
+├── pages/              # Page components
+│   ├── Index.tsx       # Welcome page
+│   └── NotFound.tsx    # 404 page
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+├── App.tsx             # Main app component
+└── main.tsx            # App entry point
 ```
 
-**Edit a file directly in GitHub**
+## 🎯 How It Works
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Personality Assessment Logic
+The app uses a scoring system based on your answers to determine your personality type:
 
-**Use GitHub Codespaces**
+- **Hours spent alone** - More time alone suggests introversion
+- **Stage fear** - Fear of public speaking indicates introversion
+- **Social event frequency** - Higher attendance suggests extroversion
+- **Outdoor activity** - More outdoor time suggests extroversion
+- **Post-socializing energy** - Feeling drained suggests introversion
+- **Friend circle size** - Larger groups suggest extroversion
+- **Social media activity** - More posting suggests extroversion
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Result Categories
+- **🌙 Introvert**: The Thoughtful Observer
+  - Prefers quiet environments
+  - Values deep relationships
+  - Enjoys solitary activities
+  - Observant and reflective
 
-## What technologies are used for this project?
+- **🌞 Extrovert**: The Social Energizer
+  - Energized by social interaction
+  - Enjoys group activities
+  - Comfortable in crowds
+  - Expressive and outgoing
 
-This project is built with:
+## 🎨 Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Adding New Questions
+To add new questions to the quiz, modify the `questions` array in `src/components/PersonalityQuiz.tsx`:
 
-## How can I deploy this project?
+```typescript
+const questions = [
+  // ... existing questions
+  {
+    id: 'newQuestion',
+    title: 'Your new question here?',
+    type: 'slider', // or 'radio', 'number'
+    emoji: '🎯',
+    min: 0,
+    max: 10,
+    scaleLabels: { low: 'Never', high: 'Always' }
+  }
+];
+```
 
-Simply open [Lovable](https://lovable.dev/projects/bb66adcb-12b5-46ac-9bcb-e2151c82bcaf) and click on Share -> Publish.
+### Updating Personality Logic
+Modify the `calculatePersonality` function to adjust how answers are scored and categorized.
 
-## Can I connect a custom domain to my Lovable project?
+### Styling
+The app uses Tailwind CSS with custom gradients and animations. Theme colors can be customized in `tailwind.config.ts`.
 
-Yes, you can!
+## 🚀 Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Build for Production
+```bash
+npm run build
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Deploy Options
+- **Vercel**: Connect your GitHub repo for automatic deployments
+- **Netlify**: Drag and drop the `dist` folder
+- **GitHub Pages**: Use GitHub Actions for automatic deployment
+- **Any static hosting service**: The app builds to static files
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **shadcn/ui** for the beautiful component library
+- **Tailwind CSS** for the utility-first styling approach
+- **Lucide** for the beautiful icons
+- **Vite** for the fast development experience
+
+---
+
+Made with ❤️ by the PersonaSense team
+
+*Discover yourself, one question at a time* ✨
