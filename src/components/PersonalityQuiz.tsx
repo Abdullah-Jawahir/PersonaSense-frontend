@@ -119,7 +119,10 @@ export const PersonalityQuiz = ({ onComplete }: QuizProps) => {
 
       try {
         // Send to backend
-        const response = await fetch('/api/predict', {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+        const apiUrl = apiBaseUrl ? `${apiBaseUrl}/predict` : '/api/predict';
+
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

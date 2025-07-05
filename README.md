@@ -167,6 +167,32 @@ The app uses Tailwind CSS with custom gradients and animations. Theme colors can
 
 ## 🚀 Deployment
 
+### Environment Configuration
+
+The frontend connects to a backend API for personality predictions. Configure the API endpoint using environment variables:
+
+#### For Local Development
+The app uses a proxy configuration in `vite.config.ts` that forwards `/api/*` requests to `http://localhost:8000`.
+
+#### For Production (Netlify/Vercel/etc.)
+Set the `VITE_API_BASE_URL` environment variable to your Railway backend URL:
+
+```bash
+VITE_API_BASE_URL=https://web-production-1231.up.railway.app
+```
+
+**Netlify Configuration:**
+1. Go to your site settings in Netlify
+2. Navigate to "Environment variables"
+3. Add: `VITE_API_BASE_URL` = `https://web-production-1231.up.railway.app`
+4. Redeploy your site
+
+**Vercel Configuration:**
+1. Go to your project settings in Vercel
+2. Navigate to "Environment Variables"
+3. Add: `VITE_API_BASE_URL` = `https://web-production-1231.up.railway.app`
+4. Redeploy your project
+
 ### Build for Production
 ```bash
 npm run build
@@ -174,7 +200,7 @@ npm run build
 
 ### Deploy Options
 - **Vercel**: Connect your GitHub repo for automatic deployments
-- **Netlify**: Drag and drop the `dist` folder
+- **Netlify**: Drag and drop the `dist` folder or connect your GitHub repo
 - **GitHub Pages**: Use GitHub Actions for automatic deployment
 - **Any static hosting service**: The app builds to static files
 
