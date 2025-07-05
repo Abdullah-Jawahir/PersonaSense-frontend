@@ -8,6 +8,12 @@ interface ResultsProps {
   results: {
     personalityType: 'Introvert' | 'Extrovert';
     answers: any;
+    predictionData?: {
+      prediction: string;
+      confidence: number;
+      user_id: string;
+      timestamp: string;
+    };
   };
   onRestart: () => void;
 }
@@ -132,6 +138,19 @@ export const Results = ({ results, onRestart }: ResultsProps) => {
                 ))}
               </div>
             </div>
+
+            {/* Prediction Confidence */}
+            {results.predictionData && (
+              <div className={`p-6 rounded-2xl bg-gradient-to-r ${personality.bgColor} border-l-4 border-gradient-to-b ${personality.color}`}>
+                <h4 className={`font-semibold mb-2 ${results.personalityType === 'Introvert' ? 'text-white' : 'text-gray-800'}`}>🎯 AI Prediction Confidence</h4>
+                <p className={`font-medium ${results.personalityType === 'Introvert' ? 'text-white' : 'text-gray-800'}`}>
+                  <span className="font-semibold">Our AI model is {results.predictionData.confidence}% confident</span> in this prediction based on your responses!
+                </p>
+                <p className={`text-sm mt-2 ${results.personalityType === 'Introvert' ? 'text-white/80' : 'text-gray-800/80'}`}>
+                  User ID: {results.predictionData.user_id.slice(0, 8)}...
+                </p>
+              </div>
+            )}
 
             {/* Fun Fact - Updated with better contrast */}
             <div className={`p-6 rounded-2xl bg-gradient-to-r ${personality.bgColor} border-l-4 border-gradient-to-b ${personality.color}`}>

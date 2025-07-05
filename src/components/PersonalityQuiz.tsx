@@ -22,6 +22,16 @@ interface Answers {
   socialMediaPosting: number;
 }
 
+interface BackendData {
+  Social_event_attendance: number;
+  Going_outside: number;
+  Friends_circle_size: number;
+  Post_frequency: number;
+  Stage_fear: string;
+  Drained_after_socializing: string;
+  Time_spent_Alone: number;
+}
+
 const questions = [
   {
     id: 'hoursAlone',
@@ -92,13 +102,51 @@ export const PersonalityQuiz = ({ onComplete }: QuizProps) => {
     }));
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      // Calculate personality type
-      const personalityType = calculatePersonality(answers as Answers);
-      onComplete({ answers, personalityType });
+      // Map answers to backend format
+      const backendData: BackendData = {
+        Social_event_attendance: answers.socialEvents || 5,
+        Going_outside: answers.goOutside || 5,
+        Friends_circle_size: answers.closeFriends || 5,
+        Post_frequency: answers.socialMediaPosting || 5,
+        Stage_fear: answers.stageFear || "No",
+        Drained_after_socializing: answers.drainedAfterSocializing || "No",
+        Time_spent_Alone: answers.hoursAlone || 4
+      };
+
+      try {
+        // Send to backend
+        const response = await fetch('/api/predict', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(backendData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to get prediction');
+        }
+
+        const predictionResult = await response.json();
+
+        // Calculate personality type as fallback
+        const personalityType = calculatePersonality(answers as Answers);
+
+        onComplete({
+          answers,
+          personalityType: predictionResult.prediction || personalityType,
+          predictionData: predictionResult
+        });
+      } catch (error) {
+        console.error('Error getting prediction:', error);
+        // Fallback to local calculation
+        const personalityType = calculatePersonality(answers as Answers);
+        onComplete({ answers, personalityType });
+      }
     }
   };
 
