@@ -159,7 +159,7 @@ export const PersonalityQuiz = ({ onComplete }: QuizProps) => {
     }
   };
 
-  // Updated logic to handle default slider values
+  // Handle default slider values
   const isAnswered = () => {
     const currentAnswer = answers[question.id as keyof Answers];
     if (question.type === 'slider') {
