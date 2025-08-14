@@ -49,8 +49,8 @@ A beautiful, interactive personality quiz application that helps you discover wh
 1. **Clone the repository**
 
    ```bash
-   git clone <your-repo-url>
-   cd frontend
+   git clone https://github.com/Abdullah-Jawahir/PersonaSense-frontend.git
+   cd PersonaSense-frontend
    ```
 
 2. **Install dependencies**
